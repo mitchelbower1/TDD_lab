@@ -67,8 +67,11 @@ describe("Tests for ChangeHandler", function() {
     expect(test.isPaymentSufficient()).toBe(false);
   });
   test("32 change produces: quarters: 1, dimes: 0, nickels: 1, pennies: 2", function() {
-    let test = new ChangeHandler(32);
-    test.insertCoin(0);
+    let test = new ChangeHandler(0);
+    test.insertCoin("penny");
+    test.insertCoin("penny");
+    test.insertCoin("quarter");
+    test.insertCoin("nickel");
     // Remember, you can arrange, act, and assert...start small
     expect(test.giveChange()).toEqual({
       quarters: 1,
